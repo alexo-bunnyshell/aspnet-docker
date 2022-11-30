@@ -4,7 +4,9 @@ WORKDIR /source
 COPY . ./webapp/
 WORKDIR /source/webapp
 RUN dotnet restore
-RUN dotnet publish -c release -o /app --no-restore
+RUN dotnet publish -c Debug -o /app --no-restore
 
 WORKDIR /app
 ENTRYPOINT ["dotnet", "webapp.dll"]
+
+#export ASPNETCORE_URLS="http://0.0.0.0:80"
