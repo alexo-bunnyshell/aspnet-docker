@@ -1,0 +1,65 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core SSH Launch",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "remoteBuild",
+            "program": "webapp",
+            "args": [],
+            "cwd": "/app",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "-T",
+                    "-o",
+                    "LogLevel=quiet",
+                    "-o",
+                    "StrictHostKeyChecking=no",
+                    "svc-app.env-uqu5jv.bunnyshell"],
+                "debuggerPath": "/root/vsdbg/vsdbg",
+                "quoteArgs": true
+            },
+            "justMyCode":false,
+            "symbolOptions": {
+                "searchPaths": ["/app"],
+                "searchMicrosoftSymbolServer": false
+            },
+            "requireExactSource": false,
+            "sourceFileMap": {
+                "/source/webapp": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": ".NET Core SSH Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "preLaunchTask": "remoteBuild",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "-T",
+                    "-o",
+                    "LogLevel=quiet",
+                    "-o",
+                    "StrictHostKeyChecking=no",
+                    "svc-app.env-uqu5jv.bunnyshell"],
+                "debuggerPath": "/root/vsdbg/vsdbg",
+                "quoteArgs": true
+            },
+            "justMyCode":false,
+            "symbolOptions": {
+                "searchPaths": ["/app"],
+                "searchMicrosoftSymbolServer": false
+            },
+            "requireExactSource": false,
+            "sourceFileMap": {
+                "/source/webapp": "${workspaceFolder}"
+            }
+        }
+    ]
+}
