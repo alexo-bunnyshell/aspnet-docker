@@ -12,7 +12,7 @@
             {
             "label": "remoteBuild",
             "type": "shell",
-            "command": "bash ${workspaceFolder}/prelaunch.sh",
+            "command": "${workspaceFolder}/prelaunch.sh",
             "args": ["${input:component}"],
             "presentation": {
                 "reveal": "always",
