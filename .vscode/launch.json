@@ -1,8 +1,17 @@
 {
     "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "component",
+            "description": "Bunnyshell Unique",
+            "default": "",
+            "type": "promptString"
+        }
+    ],
     "configurations": [
         {
             "name": ".NET Core SSH Launch",
+            "envFile": "${workspaceFolder}/.rdenv",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "remoteBuild",
@@ -18,36 +27,7 @@
                     "LogLevel=quiet",
                     "-o",
                     "StrictHostKeyChecking=no",
-                    "svc-app.env-uqu5jv.bunnyshell"],
-                "debuggerPath": "/root/vsdbg/vsdbg",
-                "quoteArgs": true
-            },
-            "justMyCode":false,
-            "symbolOptions": {
-                "searchPaths": ["/app"],
-                "searchMicrosoftSymbolServer": false
-            },
-            "requireExactSource": false,
-            "sourceFileMap": {
-                "/source/webapp": "${workspaceFolder}"
-            }
-        },
-        {
-            "name": ".NET Core SSH Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "preLaunchTask": "remoteBuild",
-            "processId": "${command:pickRemoteProcess}",
-            "pipeTransport": {
-                "pipeCwd": "${workspaceFolder}",
-                "pipeProgram": "/usr/bin/ssh",
-                "pipeArgs": [
-                    "-T",
-                    "-o",
-                    "LogLevel=quiet",
-                    "-o",
-                    "StrictHostKeyChecking=no",
-                    "svc-app.env-uqu5jv.bunnyshell"],
+                    "svc-app.env-${input:component}.bunnyshell"],
                 "debuggerPath": "/root/vsdbg/vsdbg",
                 "quoteArgs": true
             },

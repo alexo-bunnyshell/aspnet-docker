@@ -1,5 +1,13 @@
 {
     "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "component",
+            "description": "Bunnyshell Unique",
+            "default": "",
+            "type": "promptString"
+        }
+    ],
     "tasks": [
         {
             "label": "build",
@@ -18,10 +26,11 @@
             },
             "problemMatcher": "$msCompile"
         },
-	    {
+            {
             "label": "remoteBuild",
             "type": "shell",
             "command": "./prelaunch.sh",
+            "args": ["${input:component}"],
             "presentation": {
                 "reveal": "always",
                 "panel": "new"
