@@ -13,7 +13,7 @@
             "name": ".NET Core SSH Launch",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "remoteBuild",
+            "preLaunchTask": "build",
             "program": "webapp",
             "args": [],
             "cwd": "/app",
