@@ -10,7 +10,7 @@
     ],
     "tasks": [
             {
-            "label": "remoteBuild",
+            "label": "build",
             "type": "shell",
             "command": "${workspaceFolder}/prelaunch.sh",
             "args": ["${input:component}"],
