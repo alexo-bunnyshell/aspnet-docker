@@ -2,8 +2,8 @@
     "version": "0.2.0",
     "inputs": [
         {
-            "id": "component",
-            "description": "Bunnyshell Unique",
+            "id": "env_unique_id",
+            "description": "Bunnyshell Env Unique ID",
             "default": "",
             "type": "promptString"
         }
@@ -26,7 +26,9 @@
                     "LogLevel=quiet",
                     "-o",
                     "StrictHostKeyChecking=no",
-                    "svc-app.env-${input:component}.bunnyshell"],
+                    "svc-app.env-${env:BSN_ENV_UNIQUE}.bunnyshell"],
+                    // "svc-app.env-${input:env_unique_id}.bunnyshell"],
+
                 "debuggerPath": "/root/vsdbg/vsdbg",
                 "quoteArgs": true
             },

@@ -1,24 +1,30 @@
 {
     "version": "2.0.0",
     "inputs": [
-        {
-            "id": "component",
-            "description": "Bunnyshell Unique",
-            "default": "",
-            "type": "promptString"
-        }
+        // {
+        //     "id": "env_unique_id",
+        //     "description": "Bunnyshell Unique",
+        //     "default": "",
+        //     "type": "promptString"
+        // }
     ],
     "tasks": [
             {
             "label": "build",
             "type": "shell",
             "command": "${workspaceFolder}/prelaunch.sh",
-            "args": ["${input:component}"],
+            "args": ["${env:BSN_ENV_UNIQUE}"],
+            // "args": ["${input:env_unique_id}"],
             "presentation": {
                 "reveal": "always",
                 "panel": "new"
             },
             "problemMatcher":[]
-        }
+        },
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "echo BSN_ENV_UNIQUE ${env:BSN_ENV_UNIQUE}"
+          }
     ]
 }
