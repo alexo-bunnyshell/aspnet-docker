@@ -18,5 +18,16 @@ The steps to run are:
 4. Run a container with: `docker run --rm -it -p 8080:80 webapp`
 5. Open your browser and navigate to: `localhost:8080`
 
-## Thanks!
-And don't forget to visit [blog.hildenco.com](https://blog.hildenco.com).
+## Running Remote Debugger on Bunnyshell
+
+To get remote development with VsCode on an container running this project in Bunnyshell EaaS, follow the steps:
+
+1. download/install `bunnyshell-cli` https://documentation.bunnyshell.com/docs/bunnyshell-cli-install
+2. configure `bunnyshell-cli`. https://documentation.bunnyshell.com/docs/bunnyshell-cli-authentication
+3. have VsCode installed
+4. have the VsCode `code` command in $PATH https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
+5. define and deploy the environment containing this docker container image in Bunnyshell, activate "remote development" feature on env
+6. run VsCode with `BNS_ENV_UNIQUE=_your_env_uniq_ code .` in repo folder. It is essential to pass `BNS_ENV_UNIQUE` to VsCode
+7. start remode debugging session `bunnyshell-cli remote-development up --component __COMPONENT_ID__`. You can get the exact command from the Bunnyshell UI. When promted for local path select this repo folder. When prompted for remote path, select `/source/webapp` (the path in Dockerfile where `dotnet publish` runs )
+8. run `dotnet restore` locally
+9. start debugger session
